@@ -5,7 +5,7 @@ This project is a Web 3 decentralized, game-agnostic infrastructure layer built 
 # Tech Stack
 
 - **Frontend**: Next.js with TypeScript for building a responsive and user-friendly interface, utilizing libraries like Redux for state management and Web3.js or Ethers.js for blockchain interactions.
-- **Backend**: Node.js with Express for API development, TypeScript for type safety, and Prisma for database management.
+- **Backend**: Fastify for a lightweight and efficient server, with TypeScript for type safety. The backend will handle API requests, business logic, and interactions with the blockchain and database. Drizzle ORM for database management and migrations, and Redis for caching and real-time data handling.
 - **Blockchain**: Solidity for smart contract development, deployed on Ethereum or compatible chains. Hardhat for development and testing, with OpenZeppelin libraries for secure contract patterns.
 - **Relayer**: A high-performance off-chain relayer built with Node.js, responsible for monitoring on-chain events and orchestrating tournament logic.
 - **Database**: PostgreSQL for storing tournament data, user profiles, and other relevant information.
