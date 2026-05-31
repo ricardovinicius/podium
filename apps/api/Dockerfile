@@ -1,4 +1,4 @@
-FROM node:22-alpine AS deps
+FROM node:24-alpine AS deps
 WORKDIR /app
 
 COPY package.json pnpm-workspace.yaml pnpm-lock.yaml ./
@@ -8,7 +8,7 @@ COPY apps/api/package.json apps/api/
 RUN corepack enable && corepack prepare pnpm@11.5.0 --activate
 RUN pnpm install --filter ./apps/api... --frozen-lockfile
 
-FROM node:22-alpine AS build
+FROM node:24-alpine AS build
 WORKDIR /app
 
 COPY . .
@@ -18,7 +18,7 @@ COPY --from=deps /app/apps/api/node_modules ./apps/api/node_modules
 RUN corepack enable && corepack prepare pnpm@11.5.0 --activate
 RUN pnpm --filter ./apps/api... build
 
-FROM node:22-alpine AS runner
+FROM node:24-alpine AS runner
 WORKDIR /app/apps/api
 ENV NODE_ENV=production
 

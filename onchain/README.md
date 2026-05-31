@@ -4,7 +4,7 @@ Simple Hardhat project with a sample contract and test.
 
 ## Prerequisites
 
-- Node.js 22.13+
+- Node.js 24+
 - pnpm 11+
 
 ## Setup

@@ -1,4 +1,4 @@
-FROM node:22-alpine AS deps
+FROM node:24-alpine AS deps
 WORKDIR /app
 
 COPY package.json pnpm-workspace.yaml pnpm-lock.yaml ./
@@ -7,7 +7,7 @@ COPY apps/web/package.json apps/web/
 RUN corepack enable && corepack prepare pnpm@11.5.0 --activate
 RUN pnpm install --filter ./apps/web... --frozen-lockfile
 
-FROM node:22-alpine AS build
+FROM node:24-alpine AS build
 WORKDIR /app
 
 ARG NEXT_PUBLIC_API_URL
@@ -20,7 +20,7 @@ COPY --from=deps /app/apps/web/node_modules ./apps/web/node_modules
 RUN corepack enable && corepack prepare pnpm@11.5.0 --activate
 RUN pnpm --filter ./apps/web... build
 
-FROM node:22-alpine AS runner
+FROM node:24-alpine AS runner
 WORKDIR /app/apps/web
 ENV NODE_ENV=production
 
