@@ -1,3 +1,19 @@
+# Overview
+
+This project is a Web 3 decentralized, game-agnostic infrastructure layer built to orchestrate tournaments and automate trustless prize distribution. By decoupling tournament progression logic from outcome verification, the protocol allows organizers to lock prize pools in secure on-chain vaults that can only be unlocked via modular resolvers—such as multi-sig human judges, automated data APIs, or community voting. Designed to bridge the gap between cryptographic security and mainstream usability, it utilizes a high-performance off-chain relayer and account abstraction to provide esports, tabletop, and real-world event organizers with a seamless, tamper-proof system for managing competitive events.
+
+# Tech Stack
+
+- **Frontend**: Next.js with TypeScript for building a responsive and user-friendly interface, utilizing libraries like Redux for state management and Web3.js or Ethers.js for blockchain interactions.
+- **Backend**: Node.js with Express for API development, TypeScript for type safety, and Prisma for database management.
+- **Blockchain**: Solidity for smart contract development, deployed on Ethereum or compatible chains. Hardhat for development and testing, with OpenZeppelin libraries for secure contract patterns.
+- **Relayer**: A high-performance off-chain relayer built with Node.js, responsible for monitoring on-chain events and orchestrating tournament logic.
+- **Database**: PostgreSQL for storing tournament data, user profiles, and other relevant information.
+- **Testing**: Jest for unit and integration testing, and Hardhat for smart contract testing.
+- **CI/CD**: GitHub Actions for continuous integration and deployment, with automated testing, code quality checks, and deployment automation.
+- **Containerization**: Docker for containerizing the application, with Docker Compose for local development and Kubernetes for production deployments.
+- **Monitoring**: Prometheus and Grafana for monitoring application performance and health, along with centralized logging using tools like ELK Stack (Elasticsearch, Logstash, Kibana).
+
 # Codebase Architecture and Standards
 
 - Modular Architecture
