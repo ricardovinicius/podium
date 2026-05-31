@@ -120,7 +120,7 @@ Podium is the first user-facing application built on top of the Referee System. 
 
 ## Prerequisites
 
-- Node.js 20+
+- Node.js 22.13+
 - pnpm 11+
 - Docker (optional, for local Postgres + containers)
 

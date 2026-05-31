@@ -1,5 +1,10 @@
 # Local Setup
 
+## Prerequisites
+
+- Node.js 22.13+
+- pnpm 11+
+
 ## Workspaces
 
 This repo uses pnpm workspaces. Install all dependencies from the root:
