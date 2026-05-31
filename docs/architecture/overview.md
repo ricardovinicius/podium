@@ -6,7 +6,7 @@ Regarding the final user platform, we have two options: a Web3 Crypto-based UI a
 
 ## Diagram
 
-```mermaid`
+```mermaid
 flowchart TD
     subgraph Protocol["Arbiter (Praetor, Referee) Protocol"]
         
