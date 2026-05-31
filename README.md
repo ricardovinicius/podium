@@ -63,5 +63,52 @@ This project is a Web 3 decentralized, game-agnostic infrastructure layer built 
 - `README.md` - Project overview, setup instructions, and usage guidelines
 - `CONTRIBUTING.md` - Contribution guidelines for the project
 - `/docs/adr/` - Architectural Decision Records 
+- `/docs/setup.md` - Local setup and configuration notes
 
+# Repository Structure
 
+- `apps/web` - Next.js frontend
+- `apps/api` - Fastify API
+- `onchain` - Hardhat contracts and tests
+- `docs` - Architecture, ADRs, and project docs
+- `specs` - Product and engineering specs
+
+# Getting Started
+
+## Prerequisites
+
+- Node.js 20+
+- pnpm 11+
+- Docker (optional, for local Postgres + containers)
+
+## Install
+
+```bash
+pnpm install
+```
+
+## Web
+
+```bash
+pnpm --filter ./apps/web... dev
+```
+
+## API
+
+```bash
+cp apps/api/.env.example apps/api/.env
+pnpm --filter ./apps/api... dev
+```
+
+## On-chain
+
+```bash
+cp onchain/.env.example onchain/.env
+pnpm --filter ./onchain... test
+```
+
+## Docker Compose
+
+```bash
+docker compose up --build
+```
