@@ -1,7 +1,7 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { useAccount, useWriteContract, usePublicClient } from 'wagmi';
+import { useConnection, useWriteContract, usePublicClient } from 'wagmi';
 import { TournamentABI } from '@podium/sdk';
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
@@ -18,8 +18,8 @@ const getApiBase = () => {
 export default function TournamentDetailsPage() {
   const params = useParams();
   const id = params.id as string;
-  const { address } = useAccount();
-  const { writeContractAsync } = useWriteContract();
+  const { address } = useConnection();
+  const { writeContract } = useWriteContract();
   const publicClient = usePublicClient();
   const [verdictError, setVerdictError] = useState<string | null>(null);
   const [verdictLoading, setVerdictLoading] = useState<number | null>(null);
@@ -95,7 +95,7 @@ export default function TournamentDetailsPage() {
       });
 
       // Simulation passed — now send the real transaction
-      await writeContractAsync({
+      await writeContract({
         address: CONTRACT_ADDRESS,
         abi: TournamentABI,
         functionName: 'submitVerdict',
@@ -141,25 +141,24 @@ export default function TournamentDetailsPage() {
                     </p>
                   </div>
                 </div>
-                
+
                 {!m.isFinalized && tournament.status === 'InProgress' && address && (
                   <div className="mt-4 md:mt-0">
                     <div className="flex gap-3 items-center">
-                      <input 
-                        type="text" 
-                        placeholder="Winner Wallet 0x..." 
+                      <input
+                        type="text"
+                        placeholder="Winner Wallet 0x..."
                         className="border border-gray-300 p-2.5 rounded-lg text-sm w-56 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         id={`winner-${m.matchIndex}`}
                         disabled={verdictLoading === m.matchIndex}
                       />
-                      <button 
+                      <button
                         onClick={() => submitVerdict(m.matchIndex)}
                         disabled={verdictLoading === m.matchIndex}
-                        className={`px-5 py-2.5 rounded-lg text-sm font-semibold transition ${
-                          verdictLoading === m.matchIndex
-                            ? 'bg-gray-400 text-white cursor-not-allowed'
-                            : 'bg-black text-white hover:bg-gray-800'
-                        }`}
+                        className={`px-5 py-2.5 rounded-lg text-sm font-semibold transition ${verdictLoading === m.matchIndex
+                          ? 'bg-gray-400 text-white cursor-not-allowed'
+                          : 'bg-black text-white hover:bg-gray-800'
+                          }`}
                       >
                         {verdictLoading === m.matchIndex ? 'Validating...' : 'Judge'}
                       </button>
