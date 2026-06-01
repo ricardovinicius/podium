@@ -3,8 +3,10 @@ packages:
   - "packages/*"
   - "onchain"
 allowBuilds:
+  '@reown/appkit': true
   esbuild: true
   keccak: true
+  msw: true
   secp256k1: true
   sharp: true
   unrs-resolver: true
